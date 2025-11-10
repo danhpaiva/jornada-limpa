@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const dataInicio = new Date('2025-11-06T00:00:00');
+  const dataInicio = new Date('2025-11-10T00:00:00');
   const elementoDiasLimpos = document.getElementById('dias-limpos');
   const elementoMensagem = document.getElementById('mensagem');
 
@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const diferencaTempo = hoje.getTime() - dataInicio.getTime();
 
-    // Converte milissegundos para dias
-    // (1000 ms/s * 60 s/min * 60 min/h * 24 h/dia)
     const dias = Math.floor(diferencaTempo / (1000 * 60 * 60 * 24));
 
     return dias > 0 ? dias : 0;
@@ -40,14 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const anos = Math.floor(dias / 365);
       mensagem = `✨ ${dias} DIAS: ${anos} ${anos > 1 ? 'Anos' : 'Ano'} de Milagre! Seu renascimento inspira o mundo. A vitória é sua!`;
     } else {
-      // Para o caso da data de início ainda não ter chegado
       mensagem = "Preparando a decolagem! O momento da sua jornada está quase chegando.";
     }
 
     elementoMensagem.textContent = mensagem;
   }
 
-  // Inicializa e atualiza a cada segundo (opcional, mas bom para precisão)
   atualizarContadorEMensagem();
-  setInterval(atualizarContadorEMensagem, 1000 * 60 * 60 * 24); // Atualiza a cada 24 horas (dia)
+  setInterval(atualizarContadorEMensagem, 1000 * 60 * 60 * 24);
 });
