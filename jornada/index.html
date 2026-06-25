@@ -6,12 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jornada</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+  <button id="theme-toggle" aria-label="Alternar modo escuro">🌙</button>
   <div class="container">
     <h1>Jornada Limpa</h1>
-    <p class="data-inicio">Data: 26/06/2026</p>
+
+    <div class="configuracao">
+      <label for="data-input">Data de Início:</label>
+      <input type="date" id="data-input">
+    </div>
 
     <div class="contador">
       <span id="dias-limpos">0</span>
