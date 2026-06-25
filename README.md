@@ -2,20 +2,26 @@
 
 > "Um dia de cada vez. Você é mais forte do que pensa!"
 
-O **Jornada Limpa** é uma aplicação web minimalista, elegante e de código aberto criada para monitorar, celebrar e motivar pessoas em suas jornadas de superação e novos começos. Seja para quebrar um hábito, vencer um vício ou marcar o início de uma nova fase de vida, este contador transforma o tempo decorrido em mensagens personalizadas de resiliência e força.
+O **Jornada Limpa** é uma aplicação web minimalista, elegante e de código aberto criada para monitorar, celebrar e motivar pessoas em suas jornadas de superação e novos começos. Com foco total na experiência do usuário e usabilidade, este contador transforma o tempo decorrido em mensagens personalizadas de resiliência e força.
 
 ---
 
-## 🚀 Como Funciona?
+## ✨ Funcionalidades Principais
 
-O motor da aplicação calcula em tempo real a diferença entre o **"Dia Zero"** (definido no código) e a data atual. À medida que o usuário acumula "Dias de Liberdade", a interface se adapta dinamicamente para entregar mensagens de suporte psicológico e celebração de marcos importantes.
+* **Customização Dinâmica:** Defina sua própria "Data de Início" através do seletor intuitivo. A aplicação recalcula sua trajetória instantaneamente.
+* **Modo Escuro Inteligente:** O tema adapta-se automaticamente à preferência do seu sistema operacional (`prefers-color-scheme`), com suporte a alternância manual persistida no `localStorage`.
+* **Contador Animado:** Ao carregar a página, o contador exibe uma animação de contagem rápida (`Ease-out`), transformando o dado bruto em uma experiência visual envolvente.
+* **Responsivo e Rápido:** Design moderno utilizando a fonte **Inter** para máxima legibilidade, com layout otimizado para dispositivos móveis e desktop.
+* **Zero Dependências:** Construído inteiramente com **Vanilla JS**, garantindo leveza extrema e carregamento quase instantâneo.
 
-### 📈 Os Marcos da Jornada
+---
 
-O sistema categoriza o progresso através de gatilhos temporais (estilo conquistas/achievements):
+## 📈 Os Marcos da Jornada
+
+O sistema categoriza o progresso através de gatilhos temporais baseados na data escolhida:
 
 | Dias Limpos      | Fase da Jornada          | Mensagem de Impacto                        |
-| :--------------- | :----------------------- | :----------------------------------------- |
+| ---------------- | ------------------------ | ------------------------------------------ |
 | `0 dias`         | **O Início**             | Foco no hoje — a maior vitória.            |
 | `1 dia`          | **Primeiro Sol**         | Renovação imediata.                        |
 | `2 a 7 dias`     | **Semana de Descoberta** | Cada passo é gigantesco.                   |
@@ -29,11 +35,10 @@ O sistema categoriza o progresso através de gatilhos temporais (estilo conquist
 
 ## 🛠️ Stack Tecnológica
 
-Optamos pelo clássico e ultra-leve **Vanilla Tech Stack** para garantir performance máxima, zero dependências externas e carregamento instantâneo em qualquer dispositivo (mobile-first):
-
-*   **HTML5:** Estruturação semântica e acessível.
-*   **CSS3:** Estilização modularizada (localizada em `assets/css/style.css`).
-*   **JavaScript (ES6+):** Lógica assíncrona baseada em manipulação de DOM e ciclo de vida do navegador (`DOMContentLoaded`).
+* **HTML5:** Estruturação semântica e acessível.
+* **CSS3:** Estilização com Variáveis CSS, Flexbox e Media Queries para temas.
+* **JavaScript (ES6+):** Lógica reativa, manipulação de DOM e persistência local.
+* **Google Fonts:** Tipografia **Inter** para uma interface moderna e profissional.
 
 ---
 
@@ -42,8 +47,19 @@ Optamos pelo clássico e ultra-leve **Vanilla Tech Stack** para garantir perform
 ```text
 ├── assets/
 │   ├── css/
-│   │   └── style.css      # Arquitetura visual e responsividade
+│   │   └── style.css      # Variáveis de tema, animações e layout
 │   └── js/
-│       └── script.js      # Motor lógico e cálculo de timestamp
-├── index.html             # Ponto de entrada da aplicação
+│       └── script.js      # Lógica de cálculo, persistência e animação
+├── index.html             # Interface principal e seletor de data
 └── README.md              # Documentação do projeto
+
+```
+
+---
+
+## 🚀 Como usar
+
+1. Clone o repositório ou baixe os arquivos.
+2. Abra o arquivo `index.html` no seu navegador.
+3. Utilize o seletor de data para definir o início da sua jornada.
+4. O navegador lembrará da sua data e do seu tema preferido automaticamente.
