@@ -1,41 +1,74 @@
+:root {
+  --bg-color: #f4f7f6;
+  --container-bg: #ffffff;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --accent-blue: #007bff;
+  --accent-green: #28a745;
+  --accent-red: #dc3545;
+  --border: #ccc;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode {
+  --bg-color: #121212;
+  --container-bg: #1e1e1e;
+  --text-primary: #e0e0e0;
+  --text-secondary: #aaa;
+  --border: #444;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f7f6;
-  /* Fundo suave */
-  color: #333;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   margin: 0;
   text-align: center;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-  background-color: #ffffff;
+  background-color: var(--container-bg);
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  box-shadow: var(--shadow);
+  max-width: 500px;
   width: 90%;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid var(--text-primary);
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 1.2rem;
 }
 
 h1 {
-  color: #007bff;
-  /* Azul para destaque */
+  color: var(--accent-blue);
   margin-bottom: 20px;
 }
 
 .data-inicio {
   font-style: italic;
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 30px;
 }
 
 .contador {
-  background-color: #28a745;
-  /* Verde para vitória */
+  background-color: var(--accent-green);
   color: white;
+  /* Mantemos branco para contraste no verde */
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 30px;
@@ -45,6 +78,14 @@ h1 {
   display: block;
   font-size: 3em;
   font-weight: bold;
+  transition: transform 0.2s ease;
+  /* Adiciona uma leve reação */
+}
+
+/* Opcional: efeito de 'pop' ao mudar o número */
+.contador:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
 }
 
 .contador p {
@@ -52,22 +93,79 @@ h1 {
   font-size: 1.2em;
 }
 
-.mensagem-criativa {
-  min-height: 60px;
-  /* Garante espaço para a mensagem */
-  margin-bottom: 30px;
-}
-
 #mensagem {
-  font-size: 1.1em;
-  color: #dc3545;
-  /* Vermelho para a ênfase da mensagem */
-  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.5;
+  /* Melhora a legibilidade */
+  margin-top: 20px;
+  padding: 15px;
+  border-left: 4px solid var(--accent-blue);
+  /* Um toque de design */
+  background: rgba(0, 123, 255, 0.05);
+  /* Fundo suave */
+  border-radius: 0 8px 8px 0;
+  text-align: left;
+  /* Alinhamento mais profissional */
 }
 
 .slogan {
   font-size: 0.9em;
-  color: #999;
-  border-top: 1px dashed #ccc;
+  color: var(--text-secondary);
+  border-top: 1px dashed var(--border);
   padding-top: 15px;
+}
+
+.configuracao {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#data-input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-color);
+  color: var(--text-primary);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Isso detecta automaticamente se o sistema está em modo escuro */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light-mode) {
+    --bg-color: #121212;
+    --container-bg: #1e1e1e;
+    --text-primary: #e0e0e0;
+    --text-secondary: #aaa;
+    --border: #444;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.recompensas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  max-width: 400px;
+}
+
+.item-recompensa {
+  font-size: 1.5rem;
+  animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
