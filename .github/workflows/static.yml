@@ -7,6 +7,8 @@ on:
     branches:
       - main
       - master
+      - develop
+      - dev
 
 # Adicione o bloco de permissões aqui para permitir que o token GITHUB_TOKEN funcione.
 permissions:
