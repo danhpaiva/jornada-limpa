@@ -12,22 +12,48 @@
 </head>
 
 <body>
-  <button id="theme-toggle" aria-label="Alternar modo escuro">🌙</button>
+  <button id="theme-toggle" aria-label="Alternar modo escuro">
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+  </button>
   <div class="container">
-    <h1>Jornada Limpa</h1>
+    <header>
+      <h1>Jornada Limpa</h1>
+    </header>
     <div class="configuracao">
-      <label for="data-input">Data de Início:</label>
+      <label for="data-input">
+        <svg class="icon-calendar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+        Data de Início:
+      </label>
       <input type="date" id="data-input">
     </div>
+    
     <div class="contador">
       <span id="dias-limpos">0</span>
       <p>Dias de Liberdade</p>
     </div>
-    <div id="recompensas-container" class="recompensas"></div>
+
+    <div class="progresso-wrapper">
+      <div class="progresso-header">
+        <span class="progresso-label">
+          <svg class="icon-trophy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"/><path d="M12 2a6 6 0 0 1 6 6c0 3.24-2.24 6-6 6S6 11.24 6 8a6 6 0 0 1 6-6Z"/></svg>
+          Próximo: <strong id="proximo-marco-nome">-</strong>
+        </span>
+        <span id="dias-restantes" class="dias-restantes">-</span>
+      </div>
+      <div class="progresso-container">
+        <div id="progresso-barra" class="progresso-barra"></div>
+      </div>
+      <div id="progresso-texto" class="progresso-texto">Carregando progresso...</div>
+    </div>
+
     <div class="mensagem-criativa">
       <p id="mensagem"></p>
     </div>
-    <p class="slogan">Um dia de cada vez. Você é mais forte do que pensa!</p>
+    
+    <footer>
+      <p class="slogan">Um dia de cada vez. Você é mais forte do que pensa!</p>
+    </footer>
   </div>
   <script src="assets/js/script.js"></script>
 </body>
