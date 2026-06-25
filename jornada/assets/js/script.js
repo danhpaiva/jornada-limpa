@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const elementoDiasLimpos = document.getElementById('dias-limpos');
   const elementoMensagem = document.getElementById('mensagem');
 
-  // --- Recuperação de Estado (Definidas ANTES do uso) ---
+  // --- Recuperação de Estado ---
   const savedTheme = localStorage.getItem('theme');
   const savedDate = localStorage.getItem('dataInicio');
 
@@ -19,16 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleBtn.textContent = '🌙';
   }
 
-  // --- Lógica de Animação (Versão Única) ---
+  // --- Lógica de Animação ---
   let intervaloGlobal = null;
 
   function animarContador(alvo) {
     if (intervaloGlobal) clearInterval(intervaloGlobal);
-
     let atual = 0;
-    const duracao = 1000;
-    const intervaloTempo = 20;
-    const incremento = alvo / (duracao / intervaloTempo);
+    const incremento = alvo / 50;
 
     intervaloGlobal = setInterval(() => {
       atual += incremento;
@@ -38,12 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         elementoDiasLimpos.textContent = Math.floor(atual);
       }
-    }, intervaloTempo);
+    }, 20);
   }
 
   // --- Configuração Inicial ---
-  const hojeString = new Date().toISOString().split('T')[0];
-  inputData.value = savedDate || hojeString;
+  inputData.value = savedDate || new Date().toISOString().split('T')[0];
 
   // --- Eventos ---
   toggleBtn.addEventListener('click', () => {
@@ -61,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function atualizarContadorEMensagem() {
     const hoje = new Date();
     hoje.setHours(0, 0, 0, 0);
-
     const dataInicio = new Date(inputData.value + 'T00:00:00');
 
     if (dataInicio > hoje) {
@@ -70,29 +65,21 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const diferencaTempo = hoje.getTime() - dataInicio.getTime();
-    const dias = Math.floor(diferencaTempo / (1000 * 60 * 60 * 24));
-
+    const dias = Math.floor((hoje - dataInicio) / (1000 * 60 * 60 * 24));
     animarContador(dias);
 
+    // --- Mensagens ---
     let mensagem = "";
-    if (dias === 0) {
-      mensagem = "Ainda não chegamos a 1 dia, mas o hoje é a maior vitória!";
-    } else if (dias === 1) {
-      mensagem = "Primeiro Sol! Um dia incrível de renovação. Continue firme!";
-    } else if (dias >= 2 && dias <= 7) {
-      mensagem = `Semana de Descoberta! Cada ${dias}º dia é um passo gigantesco.`;
-    } else if (dias >= 8 && dias <= 30) {
-      mensagem = `Força e Coragem! ${dias} dias de superação contínua.`;
-    } else if (dias >= 31 && dias <= 90) {
-      mensagem = `Novo Ciclo! ${dias} dias de liberdade são um presente.`;
-    } else if (dias >= 91 && dias <= 180) {
-      mensagem = `Voando Alto! ${dias} dias de pura resiliência e força.`;
-    } else if (dias >= 181 && dias <= 364) {
-      mensagem = `Quase um Ano! O espelho reflete uma nova versão de você. ${dias} dias!`;
-    } else {
-      const anos = Math.floor(dias / 365);
-      mensagem = `✨ ${dias} DIAS: ${anos} ${anos > 1 ? 'Anos' : 'Ano'} de Milagre! A vitória é sua.`;
+    if (dias === 0) mensagem = "Ainda não chegamos a 1 dia, mas o hoje é a maior vitória!";
+    else if (dias === 1) mensagem = "Primeiro Sol! Um dia incrível de renovação. Continue firme!";
+    else if (dias <= 7) mensagem = `Semana de Descoberta! Cada ${dias}º dia é um passo gigantesco.`;
+    else if (dias <= 30) mensagem = `Força e Coragem! ${dias} dias de superação contínua.`;
+    else if (dias <= 90) mensagem = `Novo Ciclo! ${dias} dias de liberdade são um presente.`;
+    else if (dias <= 180) mensagem = `Voando Alto! ${dias} dias de pura resiliência e força.`;
+    else if (dias <= 364) mensagem = `Quase um Ano! O espelho reflete uma nova versão de você. ${dias} dias!`;
+    else {
+      const anosTotal = Math.floor(dias / 365);
+      mensagem = `✨ ${dias} DIAS: ${anosTotal} ${anosTotal > 1 ? 'Anos' : 'Ano'} de Milagre! A vitória é sua.`;
     }
 
     elementoMensagem.textContent = mensagem;

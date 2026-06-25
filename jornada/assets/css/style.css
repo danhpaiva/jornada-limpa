@@ -37,7 +37,7 @@ body {
   padding: 40px;
   border-radius: 12px;
   box-shadow: var(--shadow);
-  max-width: 400px;
+  max-width: 500px;
   width: 90%;
   transition: background-color 0.3s, box-shadow 0.3s;
 }
@@ -94,9 +94,20 @@ h1 {
 }
 
 #mensagem {
-  font-size: 1.1em;
-  color: var(--accent-red);
-  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.5;
+  /* Melhora a legibilidade */
+  margin-top: 20px;
+  padding: 15px;
+  border-left: 4px solid var(--accent-blue);
+  /* Um toque de design */
+  background: rgba(0, 123, 255, 0.05);
+  /* Fundo suave */
+  border-radius: 0 8px 8px 0;
+  text-align: left;
+  /* Alinhamento mais profissional */
 }
 
 .slogan {
@@ -132,5 +143,29 @@ h1 {
     --text-secondary: #aaa;
     --border: #444;
     --shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.recompensas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  max-width: 400px;
+}
+
+.item-recompensa {
+  font-size: 1.5rem;
+  animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
